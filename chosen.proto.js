@@ -1114,12 +1114,12 @@ function prototype_result_do_highlight_funct(el) {
     high_top = this.result_highlight.positionedOffset().top;
     high_bottom = high_top + this.result_highlight.getHeight();
     if (high_bottom >= visible_bottom) {
-      //return this.search_results.scrollTop = (high_bottom - maxHeight) > 0 ? high_bottom - maxHeight : 0;
-      if ((high_bottom - maxHeight) > 0){
+      return this.search_results.scrollTop = (high_bottom - maxHeight) > 0 ? high_bottom - maxHeight : 0;
+   /*   if ((high_bottom - maxHeight) > 0){
     	  return this.search_results.scrollTop = high_bottom - maxHeight;
       } else {
     	  return 0;
-      }
+      } */
     } else if (high_top < visible_top) {
       return this.search_results.scrollTop = high_top;
     }
