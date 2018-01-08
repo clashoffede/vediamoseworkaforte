@@ -229,7 +229,12 @@ function prototype_add_group_funct(group) {
       array_index: group_position,
       group: true,
       label: this.escapeExpression(group.label),
-      title: group.title ? group.title : void 0,
+      title: if (group.title){
+    	  group.title;
+      } else {
+    	  void 0;
+      },
+ //   	  group.title ? group.title : void 0,
       children: 0,
       disabled: group.disabled,
       classes: group.className
@@ -420,14 +425,36 @@ function prototype_set_default_values_funct() {
     }
     this.disable_search_threshold = this.options.disable_search_threshold || 0;
     this.disable_search = this.options.disable_search || false;
-    this.enable_split_word_search = this.options.enable_split_word_search != null ? this.options.enable_split_word_search : true;
-    this.group_search = this.options.group_search != null ? this.options.group_search : true;
+    if (this.options.enable_split_word_search !== null){
+    	this.enable_split_word_search = this.options.enable_split_word_search;
+    } else {
+    	this.enable_split_word_search = true;
+    }
+    
+    if (this.options.group_search !== null){
+    	this.group_search = this.options.group_search;
+    } else {
+    	this.group_search = true;
+    }
     this.search_contains = this.options.search_contains || false;
-    this.single_backstroke_delete = this.options.single_backstroke_delete != null ? this.options.single_backstroke_delete : true;
+    if (this.options.single_backstroke_delete !== null){
+    	this.single_backstroke_delete = this.options.single_backstroke_delete;
+    } else {
+    	this.single_backstroke_delete = true;
+    }
     this.max_selected_options = this.options.max_selected_options || Infinity;
     this.inherit_select_classes = this.options.inherit_select_classes || false;
-    this.display_selected_options = this.options.display_selected_options != null ? this.options.display_selected_options : true;
-    this.display_disabled_options = this.options.display_disabled_options != null ? this.options.display_disabled_options : true;
+    if (this.options.display_selected_options !== null){
+    	this.display_selected_options = this.options.display_selected_options;
+    } else {
+    	this.display_selected_options = true;
+    }
+    
+    if (this.options.display_disabled_options !== null){
+    	this.display_disabled_options = this.options.display_disabled_options;
+    } else {
+    	 this.display_disabled_options = true;
+    }
     this.include_group_label_in_selected = this.options.include_group_label_in_selected || false;
     this.max_shown_results = this.options.max_shown_results || Number.POSITIVE_INFINITY;
     return this.case_sensitive_search = this.options.case_sensitive_search || false;
