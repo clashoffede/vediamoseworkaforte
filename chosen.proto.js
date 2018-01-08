@@ -229,7 +229,12 @@ function prototype_add_group_funct(group) {
       array_index: group_position,
       group: true,
       label: this.escapeExpression(group.label),
-      title: group.title ? group.title : void 0,
+      title: if (group.title){
+    	  group.title;
+      } else {
+    	  void 0;
+      },
+ //   	  group.title ? group.title : void 0,
       children: 0,
       disabled: group.disabled,
       classes: group.className
@@ -839,21 +844,11 @@ function prototype_set_up_html_funct() {
     if (this.form_field.id.length) {
       container_props.id = this.form_field.id.replace(/[^\w]/g, '_') + "_chosen";
     }
-    
- /*   if (this.is_multiple){
-    	this.container = new Element('div', container_props).update(this.multi_temp.evaluate({
-    	      "default": this.default_text
-        }));
-    } else {
-    	this.container = new Element('div', container_props).update(this.single_temp.evaluate({
-    	      "default": this.default_text
-        }));
-    } */
     this.container = this.is_multiple ? new Element('div', container_props).update(this.multi_temp.evaluate({
       "default": this.default_text
     })) : new Element('div', container_props).update(this.single_temp.evaluate({
       "default": this.default_text
-    })); 
+    }));
     this.form_field.hide().insert({
       after: this.container
     });
@@ -1115,11 +1110,6 @@ function prototype_result_do_highlight_funct(el) {
     high_bottom = high_top + this.result_highlight.getHeight();
     if (high_bottom >= visible_bottom) {
       return this.search_results.scrollTop = (high_bottom - maxHeight) > 0 ? high_bottom - maxHeight : 0;
-   /*   if ((high_bottom - maxHeight) > 0){
-    	  return this.search_results.scrollTop = high_bottom - maxHeight;
-      } else {
-    	  return 0;
-      } */
     } else if (high_top < visible_top) {
       return this.search_results.scrollTop = high_top;
     }
@@ -1203,29 +1193,19 @@ function prototype_show_search_field_default_funct() {
 function prototype_search_results_mouseup_funct(evt) {
     var target;
     target = evt.target.hasClassName("active-result") ? evt.target : evt.target.up(".active-result");
-    /*if (evt.target.hasClassName("active-result")){
-    	target = evt.target;
-    } else {
-    	target = evt.target.up(".active-result");
-    }
     if (target) {
       this.result_highlight = target;
       this.result_select(evt);
       return this.search_field.focus();
-    }*/
+    }
   };
 
 function prototype_search_results_mouseover_funct(evt) {
     var target;
     target = evt.target.hasClassName("active-result") ? evt.target : evt.target.up(".active-result");
-  /*  if (evt.target.hasClassName("active-result")){
-    	target = evt.target;
-    } else {
-    	target = evt.target.up(".active-result");
-    }
     if (target) {
       return this.result_do_highlight(target);
-    }*/
+    }
   };
 
 function prototype_search_results_mouseout_funct(evt) {
@@ -1483,11 +1463,6 @@ function clear_backstroke_funct() {
 function keydown_checker_funct(evt) {
     var stroke, _ref1;
     stroke = (_ref1 = evt.which) != null ? _ref1 : evt.keyCode;
-  /*  if ((_ref1 = evt.which) !== null){
-    	stroke = _ref1;
-    } else {
-    	stroke = evt.keyCode;
-    } */
     this.search_field_scale();
     if (stroke !== 8 && this.pending_backstroke) {
       this.clear_backstroke();
