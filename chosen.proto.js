@@ -229,7 +229,12 @@ function prototype_add_group_funct(group) {
       array_index: group_position,
       group: true,
       label: this.escapeExpression(group.label),
-      title: group.title ? group.title : void 0,
+      title: if (group.title){
+    	  group.title;
+      } else {
+    	  void 0;
+      },
+ //   	  group.title ? group.title : void 0,
       children: 0,
       disabled: group.disabled,
       classes: group.className
