@@ -1217,15 +1217,15 @@ function prototype_search_results_mouseup_funct(evt) {
 
 function prototype_search_results_mouseover_funct(evt) {
     var target;
-    //target = evt.target.hasClassName("active-result") ? evt.target : evt.target.up(".active-result");
-    if (evt.target.hasClassName("active-result")){
+    target = evt.target.hasClassName("active-result") ? evt.target : evt.target.up(".active-result");
+  /*  if (evt.target.hasClassName("active-result")){
     	target = evt.target;
     } else {
     	target = evt.target.up(".active-result");
     }
     if (target) {
       return this.result_do_highlight(target);
-    }
+    }*/
   };
 
 function prototype_search_results_mouseout_funct(evt) {
