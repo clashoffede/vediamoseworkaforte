@@ -1202,8 +1202,8 @@ function prototype_show_search_field_default_funct() {
 
 function prototype_search_results_mouseup_funct(evt) {
     var target;
-    //target = evt.target.hasClassName("active-result") ? evt.target : evt.target.up(".active-result");
-    if (evt.target.hasClassName("active-result")){
+    target = evt.target.hasClassName("active-result") ? evt.target : evt.target.up(".active-result");
+    /*if (evt.target.hasClassName("active-result")){
     	target = evt.target;
     } else {
     	target = evt.target.up(".active-result");
@@ -1212,7 +1212,7 @@ function prototype_search_results_mouseup_funct(evt) {
       this.result_highlight = target;
       this.result_select(evt);
       return this.search_field.focus();
-    }
+    }*/
   };
 
 function prototype_search_results_mouseover_funct(evt) {
