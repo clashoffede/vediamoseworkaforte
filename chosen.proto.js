@@ -840,7 +840,7 @@ function prototype_set_up_html_funct() {
       container_props.id = this.form_field.id.replace(/[^\w]/g, '_') + "_chosen";
     }
     
-    if (this.is_multiple){
+ /*   if (this.is_multiple){
     	this.container = new Element('div', container_props).update(this.multi_temp.evaluate({
     	      "default": this.default_text
         }));
@@ -848,12 +848,12 @@ function prototype_set_up_html_funct() {
     	this.container = new Element('div', container_props).update(this.single_temp.evaluate({
     	      "default": this.default_text
         }));
-    }
-/*    this.container = this.is_multiple ? new Element('div', container_props).update(this.multi_temp.evaluate({
+    } */
+    this.container = this.is_multiple ? new Element('div', container_props).update(this.multi_temp.evaluate({
       "default": this.default_text
     })) : new Element('div', container_props).update(this.single_temp.evaluate({
       "default": this.default_text
-    })); */
+    })); 
     this.form_field.hide().insert({
       after: this.container
     });
