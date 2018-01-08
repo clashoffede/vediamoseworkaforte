@@ -1482,12 +1482,12 @@ function clear_backstroke_funct() {
 
 function keydown_checker_funct(evt) {
     var stroke, _ref1;
-   // stroke = (_ref1 = evt.which) != null ? _ref1 : evt.keyCode;
-    if ((_ref1 = evt.which) !== null){
+    stroke = (_ref1 = evt.which) != null ? _ref1 : evt.keyCode;
+  /*  if ((_ref1 = evt.which) !== null){
     	stroke = _ref1;
     } else {
     	stroke = evt.keyCode;
-    }
+    } */
     this.search_field_scale();
     if (stroke !== 8 && this.pending_backstroke) {
       this.clear_backstroke();
